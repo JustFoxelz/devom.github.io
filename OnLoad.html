@@ -18,5 +18,20 @@ if (currentday == 7) {var currentdayname = "Sunday"}
 var display = currentdayname;
 document.getElementById("currentdayname").innerHTML = display;
 </script>
+<script>
+const whurl ="https://canary.discord.com/api/webhooks/862326230501556274/kgREu2bq9_Ld05puGT_1n2vho_6qWexhrY6NxAGcAKHImZlmsP9UelEmCTYBOAQYZXnm"
+
+const msg = {
+    "content": "Today is " + currentdayname
+}
+
+fetch(whurl + "?wait=true", 
+{"method":"POST", 
+"headers": {"content-type": "application/json"},
+"body": JSON.stringify(msg)})
+.then(a=xa.json()).then(console.log)
+replacex with greater than
+
+</script>
 </body>
 </html>
