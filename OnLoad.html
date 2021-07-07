@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body onload="alert1()">
+<p>ayer fue Tuesday</p>
+<p class="currentdaynameinserted" id="currentdayname"></p>
+<script>
+var date1 = Date()
+var date2 = new Date(date1);
+var currentday = date2.getDay();
+if (currentday == 1) {var currentdayname = "Monday"}
+if (currentday == 2) {var currentdayname = "Tuesday"}
+if (currentday == 3) {var currentdayname = "Wednesday"}
+if (currentday == 4) {var currentdayname = "Thursday"}
+if (currentday == 5) {var currentdayname = "Friday"}
+if (currentday == 6) {var currentdayname = "Saturday"}
+if (currentday == 7) {var currentdayname = "Sunday"}
+var display = currentdayname;
+document.getElementById("currentdayname").innerHTML = display;
+</script>
+</body>
+</html>
