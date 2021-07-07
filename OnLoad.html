@@ -1,37 +1,35 @@
 <html>
-<head>
-</head>
-<body onload="alert1()">
-<p>ayer fue Tuesday</p>
-<p class="currentdaynameinserted" id="currentdayname"></p>
-<script>
-var date1 = Date()
-var date2 = new Date(date1);
-var currentday = date2.getDay();
-if (currentday == 1) {var currentdayname = "Monday"}
-if (currentday == 2) {var currentdayname = "Tuesday"}
-if (currentday == 3) {var currentdayname = "Wednesday"}
-if (currentday == 4) {var currentdayname = "Thursday"}
-if (currentday == 5) {var currentdayname = "Friday"}
-if (currentday == 6) {var currentdayname = "Saturday"}
-if (currentday == 7) {var currentdayname = "Sunday"}
-var display = currentdayname;
-document.getElementById("currentdayname").innerHTML = display;
-</script>
-<script>
-const whurl ="https://canary.discord.com/api/webhooks/862326230501556274/kgREu2bq9_Ld05puGT_1n2vho_6qWexhrY6NxAGcAKHImZlmsP9UelEmCTYBOAQYZXnm"
-
-const msg = {
-    "content": "Today is " + currentdayname
-}
-
-fetch(whurl + "?wait=true", 
-{"method":"POST", 
-"headers": {"content-type": "application/json"},
-"body": JSON.stringify(msg)})
-.then(a=xa.json()).then(console.log)
-replacex with greater than
-
-</script>
-</body>
+	<head>
+	</head>
+		<body onload="alert1()">
+		<button onclick="webhook()" > Webhook! </button>
+		<input id="discordmessage" name="discordmessage" placeholder="Type a message!">
+		<p class="currentdaynameinserted" id="currentdayname"></p>
+			<script>
+			var date1 = Date()
+			var date2 = new Date(date1);
+			var currentday = date2.getDay();
+			if (currentday == 1) {var currentdayname = "Monday"}
+			if (currentday == 2) {var currentdayname = "Tuesday"}
+			if (currentday == 3) {var currentdayname = "Wednesday"}
+			if (currentday == 4) {var currentdayname = "Thursday"}
+			if (currentday == 5) {var currentdayname = "Friday"}
+			if (currentday == 6) {var currentdayname = "Saturday"}
+			if (currentday == 7) {var currentdayname = "Sunday"}
+			var display = currentdayname;
+			document.getElementById("currentdayname").innerHTML = display;
+			</script>
+				<script>
+				var discordmessagetosend = document.getElementById("discordmessage").value;
+				function webhook() {
+				const whurl ="https://canary.discord.com/api/webhooks/862455556597481482/cXiKOQIRTu8OxcElUuHOgZPlXLTT7HExBzTg5znqGMNw5UckyYv1QGdph35QVOHYBqfG"
+				const msg = {
+				"content": discordmessagetosend
+				}
+				
+				fetch(whurl, {"method":"POST", "headers": {"content-type": "application/json"},
+				"body": JSON.stringify(msg)})
+				}
+				</script>
+		</body>
 </html>
