@@ -1,0 +1,23 @@
+<html>
+	<head>
+	</head>
+		<body>
+		<button onclick="webhook()" > Webhook! </button>
+		<iframe src="https://titanembeds.com/embed/862326188554584094" height="600" width="800" frameborder="0"></iframe>
+				<script>
+
+					var ClientID = prompt("Please type your given client id here!")
+					var webhookurl = atob(webhookurl)
+				function webhook() {
+				var promptmessage = prompt("What do you want to send?")
+				const whurl = webhookurl
+				const msg = {
+				"content": promptmessage
+				}
+				
+				fetch(whurl, {"method":"POST", "headers": {"content-type": "application/json"},
+				"body": JSON.stringify(msg)})
+			}
+				</script>
+		</body>
+</html>
